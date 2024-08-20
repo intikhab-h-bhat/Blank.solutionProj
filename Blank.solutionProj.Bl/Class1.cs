@@ -6,6 +6,7 @@ namespace Blank.solutionProj.Bl
     {
         public int Add(int a, int b)
         {
+            // creating instance
             DbContext dbContext = new DbContext();
             return dbContext.Add(a, b);
         }
