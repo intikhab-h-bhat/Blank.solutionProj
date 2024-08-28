@@ -7,7 +7,7 @@ namespace Blank.solutionProj.Bl
         public int Add(int a, int b)
         {
             // creating instance
-            DbContext dbContext = new DbContext();
+            AppDbContext dbContext = new AppDbContext();
             // calling add finction of Dbcontext
             return dbContext.Add(a, b);
         }
