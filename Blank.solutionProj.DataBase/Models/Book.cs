@@ -14,6 +14,7 @@ namespace Blank.solutionProj.DataBase.Models
         public string Description { get; set; }
         public int NoOfPages { get; set; }
         public bool IsActive { get; set; }
+        public DateTime CreatedOn { get; set; }
 
 
 
