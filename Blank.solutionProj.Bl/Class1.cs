@@ -1,4 +1,4 @@
-﻿using Blank.solutionProj.DataBase;
+﻿using Blank.solutionProj.DataBase.Data;
 
 namespace Blank.solutionProj.Bl
 {
