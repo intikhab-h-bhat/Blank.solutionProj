@@ -15,7 +15,11 @@ namespace Blank.solutionProj.DataBase.Models
         public int NoOfPages { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedOn { get; set; }
+        //for foreign key of language table
+        public int LanguageId { get; set; }
 
+
+        public Language Language { get; set; }
 
 
     }
