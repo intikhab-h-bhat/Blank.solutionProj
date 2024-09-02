@@ -12,5 +12,6 @@ namespace Blank.solutionProj.DataBase.Models
         public string Title { get; set; }
         public string Description { get; set; }
 
+
     }
 }

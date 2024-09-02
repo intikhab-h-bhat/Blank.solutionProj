@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace Blank.solutionProj.DataBase.Models
 {
-    internal class BookPrice
+    public class BookPrice
     {
         public int Id { get; set; }
-        public int Price { get; set; }
+        public int Amounnt { get; set; }
+
+        public int BookId { get; set; }
+        public int CurrencyId { get; set; }
+
+
+        public Book Book { get; set; }
+        public Currency Currency { get; set; }
         
 
     }
