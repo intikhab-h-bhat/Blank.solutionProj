@@ -19,13 +19,23 @@ namespace Blank.solutionProj.DataBase.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          modelBuilder.Entity<Currency>().HasData(
+            modelBuilder.Entity<Currency>().HasData(
+            new Currency() { Id = 1, Title = "INR", Description = "Indian Currency" },
+            new Currency() { Id = 2, Title = "SAR", Description = "Indian Currency" },
+            new Currency() { Id = 3, Title = "AUS$", Description = "Indian Currency" },
+            new Currency() { Id = 4, Title = "US$", Description = "Indian Currency" }
+            );
 
-          new Currency(){Id=1,Title="INR",Description="Indian Currency"},
-          new Currency(){Id=2,Title="SAR",Description="Indian Currency"},
-          new Currency(){Id=3,Title="AUS$",Description="Indian Currency"},
-          new Currency() { Id = 4, Title = "US$", Description = "Indian Currency" }
-          );
+            modelBuilder.Entity<Language>().HasData(
+                new Language() { Id = 1, Title = "English", Description = "English" },
+                new Language() { Id = 2, Title = "Urdu", Description = "Urdu" },
+                new Language() { Id = 3, Title = "French", Description = "French" },
+                new Language() { Id = 4, Title = "Spanish", Description = "Spanish" }
+
+                );
+
+
+
         }
 
     }
