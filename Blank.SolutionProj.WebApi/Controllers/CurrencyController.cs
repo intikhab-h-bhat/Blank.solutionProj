@@ -1,4 +1,5 @@
 ﻿using Blank.solutionProj.DataBase.Data;
+using Blank.solutionProj.DataBase.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,14 +26,19 @@ namespace Blank.SolutionProj.WebApi.Controllers
             // var result = (from currency in _appDbContext.Currencys select currency).ToList();
 
             //var result= await _appDbContext.Currencys.ToListAsync();
-            var result = await (from currency in _appDbContext.Currencys select currency).ToListAsync();
+            var result = await (from currency in _appDbContext.Currencys 
+             select new Currency()
+            {
+                Id = currency.Id,
+                Title = currency.Title,
+            }).ToListAsync();
 
 
             return Ok(result);
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCurrencyByIdAsync([FromRoute] int id)
         {
 
@@ -44,6 +50,38 @@ namespace Blank.SolutionProj.WebApi.Controllers
 
             return Ok(result);
 
+        }
+
+
+        [HttpGet("{title}")]
+        public async Task<IActionResult> GetCurrencyByTitleAsync([FromRoute] string title,[FromQuery] string? desc)
+        {
+            //var result = await _appDbContext.Currencys.FirstOrDefaultAsync(x=>x.Title == title
+            //&&  (string.IsNullOrEmpty(desc) || x.Description == desc));    
+
+            var result = await _appDbContext.Currencys.Where(x => x.Title == title
+            && (string.IsNullOrEmpty(desc) || x.Description == desc)).ToListAsync();
+
+
+            return Ok(result);
+
+        }
+
+        [HttpPost("all")]
+        public async Task<IActionResult> GetCurrencyByIdsAsync([FromBody] List<int> ids)
+        {
+            //var ids=new List<int> { 1,2,3};
+
+            var result = await _appDbContext.Currencys.Where(x=> ids.Contains(x.Id))
+                .Select(x => new Currency()
+                {
+                    Id=x.Id, Title=x.Title,
+                 })
+                .ToListAsync();
+          
+
+
+            return Ok(result);
         }
 
     }
